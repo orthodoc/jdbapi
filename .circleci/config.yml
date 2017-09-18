@@ -52,9 +52,9 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - v2-npm-dependencies-{{ checksum "package.json" }}
+      #- restore_cache:
+      #    keys:
+      #    - v2-npm-dependencies-{{ checksum "package.json" }}
       - run: npm install
       - save_cache:
           paths:
