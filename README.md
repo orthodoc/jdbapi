@@ -1,29 +1,4 @@
-# PostgREST Starter Kit
-
-Boilerplate and tooling for authoring REST API backends with [PostgREST](https://postgrest.com).
-
-![PostgREST Starter Kit](/media/postgrest-starter-kit.gif?raw=true "PostgREST Starter Kit")
-
-## Purpose
-
-PostgREST enables a different way of building data driven API backends. It does "one thing well" and that is to provide you with a REST api over your database, however to build a complex production system that does things like talk to 3rd party systems, sends emails, implements real time updates for browsers, write integration tests, implement authentication, you need additional components. For this reason, some developers either submit feature requests that are not the scope of PostgREST or think of it just as a prototyping utility and not a powerful/flexible production component with excellent performance. This repository aims to be a starting point for all PostgREST based projects and bring all components together under a well defined structure. We also provide tooling that will aid you with iterating on your project and tools/scripts to enable a build pipeline to push everything to production. There are quite a few components in the stack but you can safely comment out pg_amqp_bridge/rabbitmq (or even openresty) instances in docker-compose.yml if you don't need the features/functionality they provide.
-
-
-## Features
-
-✓ Cross-platform development on macOS, Windows or Linux inside [Docker](https://www.docker.com/)<br>
-✓ [PostgreSQL](https://www.postgresql.org/) database schema boilerplate with authentication and authorization flow<br>
-✓ [OpenResty](https://openresty.org/en/) configuration files for the reverse proxy<br>
-✓ [RabbitMQ](https://www.rabbitmq.com/) integration through [pg-amqp-bridge](https://github.com/subzerocloud/pg-amqp-bridge)<br>
-✓ [Lua](https://www.lua.org/) functions to hook into each stage of the HTTP request and add custom logic (integrate 3rd party systems)<br>
-✓ Debugging and live code reloading (sql/configs/lua) functionality using [subzero-cli](https://github.com/subzerocloud/subzero-cli)<br>
-✓ Full migration management (migration files are automatically created) through [subzero-cli](https://github.com/subzerocloud/subzero-cli)/[sqitch](http://sqitch.org/)/[apgdiff](https://github.com/subzerocloud/apgdiff)<br>
-✓ SQL unit test using [pgTAP](http://pgtap.org/)<br>
-✓ Integration tests with [SuperTest / Mocha](https://github.com/visionmedia/supertest)<br>
-✓ (soon) Docker files for building production images<br>
-✓ Community support on [Slack](https://slack.subzero.cloud/)<br>
-✓ Compatible with [subZero](https://subzero.cloud/) if you decide you need a GraphQL API with no additional work<br>
-
+# JDB API
 
 ## Directory Layout
 
@@ -125,16 +100,9 @@ More information in [Production Infrastructure (AWS ECS+RDS)](https://github.com
 
 Anyone and everyone is welcome to contribute.
 
-## Support and Documentation
-* [Wiki](https://github.com/subzerocloud/postgrest-starter-kit/wiki) — comprehensive documentation
-* [PostgREST API Referrance](https://postgrest.com/en/stable/api.html)
-* [PostgreSQL Manual](https://www.postgresql.org/docs/current/static/index.html)
-* [Slack](https://slack.subzero.cloud/) — Watch announcements, share ideas and feedback
-* [GitHub Issues](https://github.com/subzerocloud/postgrest-starter-kit/issues) — Check open issues, send feature requests
-
 ## License
 
-Copyright © 2017-present subZero Cloud, LLC.<br />
+Copyright © 2017-present Biswajit Baruah.<br />
 This source code is licensed under [MIT](https://github.com/subzerocloud/postgrest-starter-kit/blob/master/LICENSE.txt) license<br />
 The documentation to the project is licensed under the [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/) license.
 

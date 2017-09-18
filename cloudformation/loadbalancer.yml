@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: PostgREST Starter Kit Load Balancer
+Description: JDB Load Balancer
 Parameters:
   ClusterName:
     Type: String

@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: PostgREST Starter Kit Application Service
+Description: JDB Application Service
 Parameters:
   ListenerHostNamePattern:
     Type: String
