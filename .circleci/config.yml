@@ -70,7 +70,7 @@ jobs:
           - v2-docker-images
       - restore_cache:
           keys:
-          - v2-npm-dependencies-{{ checksum "package.json" }}
+          - v2-npm-dependencies-{{ checksum "package.json" }}-{{ .Branch }}
       - run:
           name: load cached docker images
           command: docker load --input ~/.docker/images.tar
