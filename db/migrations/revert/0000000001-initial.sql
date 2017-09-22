@@ -20,4 +20,6 @@ DROP EXTENSION pgcrypto CASCADE;
 
 DROP TYPE _time_trial_type;
 
+DROP ROLE IF EXISTS anonymous, api, webuser;
+
 COMMIT TRANSACTION;
