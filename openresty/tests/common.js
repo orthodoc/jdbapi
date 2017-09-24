@@ -1,7 +1,7 @@
 import {config} from 'dotenv';
 import {spawnSync} from 'child_process';
 // var execSync = require('child_process').execSync;
-const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoid2VidXNlciJ9.uSsS2cukBlM6QXe4Y0H90fsdkJSGcle9b7p_kMV1Ymk'
+const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYTgzOTk0NDktM2YyZi00N2NlLWI1OWItYmY3NTAyNjU4ZDg2Iiwicm9sZSI6IndlYnVzZXIifQ.X8qW89hQ4b113dl1JHs0GHGBUY3pieMuT9eaYFoDD2E'
 const request = require('supertest');
 
 config();//.env file vars added to process.env

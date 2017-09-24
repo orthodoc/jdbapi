@@ -19,6 +19,8 @@ begin;
 \echo # Loading dependencies
 -- functions for storing different settins in a table
 \ir libs/settings/schema.sql
+-- functions for updating the tables
+\ir libs/utilities/schema.sql
 -- functions implementing authentication (parts of the lib are included in data and api schema)
 \ir libs/auth/schema.sql
 -- functions for reading different http request properties exposed by PostgREST

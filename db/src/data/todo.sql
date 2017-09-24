@@ -2,7 +2,7 @@ create table todo (
 	id    serial primary key,
 	todo  text not null,
 	private boolean default true,  
-	owner_id int references "user"(id) default request.user_id()
+	owner_id uuid references "user"(id) default request.user_id()
 );
 
 create trigger send_change_event

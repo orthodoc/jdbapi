@@ -11,25 +11,25 @@
 -- 
 -- fill table data.user (2)
 \echo # filling table data.user (2)
-COPY data.user (id,name,email,"password") FROM STDIN (FREEZE ON);
-1	alice	alice@email.com	pass
-2	bob	bob@email.com	pass
+COPY data.user (id,email,"password",phone_number) FROM STDIN (FREEZE ON);
+a8399449-3f2f-47ce-b59b-bf7502658d86	alice@email.com	pass	+96872343234
+1d2759f8-879e-45f7-82ae-b77183fff549	bob@email.com	pass	+96872343289
 \.
 -- 
 -- fill table data.todo (6)
 \echo # filling table data.todo (6)
 COPY data.todo (id,todo,private,owner_id) FROM STDIN (FREEZE ON);
-1	item_1	FALSE	1
-2	item_2	TRUE	1
-3	item_3	FALSE	1
-4	item_4	TRUE	2
-5	item_5	TRUE	2
-6	item_6	FALSE	2
+1	item_1	FALSE	a8399449-3f2f-47ce-b59b-bf7502658d86
+2	item_2	TRUE	a8399449-3f2f-47ce-b59b-bf7502658d86
+3	item_3	FALSE	a8399449-3f2f-47ce-b59b-bf7502658d86
+4	item_4	TRUE	1d2759f8-879e-45f7-82ae-b77183fff549
+5	item_5	TRUE	1d2759f8-879e-45f7-82ae-b77183fff549
+6	item_6	FALSE	1d2759f8-879e-45f7-82ae-b77183fff549
 \.
 -- 
 -- restart sequences
-ALTER SEQUENCE data.user_id_seq RESTART WITH 3;
-ALTER SEQUENCE data.todo_id_seq RESTART WITH 7;
+--ALTER SEQUENCE data.user_id_seq RESTART WITH 3;
+--ALTER SEQUENCE data.todo_id_seq RESTART WITH 7;
 -- 
 -- analyze modified tables
 ANALYZE data.user;

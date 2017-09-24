@@ -18,11 +18,11 @@ create or replace function request.header(h text) returns text as $$
     select request.env_var('request.header.' || h);
 $$ stable language sql;
 
-create or replace function request.user_id() returns int as $$
+create or replace function request.user_id() returns uuid as $$
     select 
     case request.jwt_claim('user_id') 
-    when '' then 0
-    else request.jwt_claim('user_id')::int
+    when '' then null
+    else request.jwt_claim('user_id')::uuid
 	end
 $$ stable language sql;
 

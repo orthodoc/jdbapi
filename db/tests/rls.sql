@@ -21,7 +21,7 @@ select set_eq(
 -- switch to a specific application user
 set local role webuser;
 set request.jwt.claim.role = 'webuser';
-set request.jwt.claim.user_id = '1'; --alice
+set request.jwt.claim.user_id = 'a8399449-3f2f-47ce-b59b-bf7502658d86'; --alice
 
 select set_eq(
     'select id from api.todos where mine = true',
