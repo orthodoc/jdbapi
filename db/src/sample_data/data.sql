@@ -11,9 +11,9 @@
 -- 
 -- fill table data.user (2)
 \echo # filling table data.user (2)
-COPY data.user (id,email,"password",phone_number) FROM STDIN (FREEZE ON);
-a8399449-3f2f-47ce-b59b-bf7502658d86	alice@email.com	pass	+96872343234
-1d2759f8-879e-45f7-82ae-b77183fff549	bob@email.com	pass	+96872343289
+COPY data.user (id,email,"password") FROM STDIN (FREEZE ON);
+a8399449-3f2f-47ce-b59b-bf7502658d86	alice@email.com	pass
+1d2759f8-879e-45f7-82ae-b77183fff549	bob@email.com	pass
 \.
 -- 
 -- fill table data.todo (6)
