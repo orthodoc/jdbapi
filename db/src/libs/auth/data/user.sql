@@ -13,7 +13,8 @@ create table "user" (
 	updated_at		   timestamp default now(),
 
 	constraint		   user_pk primary key(id),
-	constraint		   user_email_uk unique(email) not deferrable initially immediate
+	constraint		   user_email_uk unique(email) not deferrable initially immediate,
+	constraint		   user_email_check check (email ~* '^.+@.+\..+$')
 );
 
 create trigger user_encrypt_pass_trigger

@@ -2,18 +2,22 @@ create or replace function
 signup(
         email text,
         password text,
-        role text
+        role text default quote_ident(settings.get('auth.default-role'))
     )
     returns session as $$
 declare
     usr record;
     result record;
 begin
-	EXECUTE 'SET search_path TO ' || quote_ident(settings.get('auth.data-schema')) || ', public';                 
-    insert into "user" as u
-        (email, password, role) values
-        (signup.email, signup.password, signup.role)
-        returning row_to_json(u.*) as j into usr;
+	EXECUTE 'SET search_path TO ' || quote_ident(settings.get('auth.data-schema')) || ', public';
+    if signup.password <> ' ' then
+        insert into "user" as u
+            (email, password, role) values
+            (signup.email, signup.password, signup.role::user_role)
+            returning row_to_json(u.*) as j into usr;
+    else
+        raise invalid_password using message = 'invalid password';
+    end if;
 
     -- invalidate null registrations
     if usr is null then
@@ -32,4 +36,4 @@ begin
 end
 $$ security definer language plpgsql;
 
-revoke all privileges on function signup(text, text) from public;
+revoke all privileges on function signup(text, text, text) from public;

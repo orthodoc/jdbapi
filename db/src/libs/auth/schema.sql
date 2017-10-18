@@ -39,7 +39,7 @@ create or replace function set_auth_endpoints_privileges("schema" text, "anonymo
 declare r record;
 begin
   execute 'grant execute on function ' || quote_ident(schema) || '.login(text,text) to ' || quote_ident(anonymous);
-  execute 'grant execute on function ' || quote_ident(schema) || '.signup(text,text) to ' || quote_ident(anonymous);
+  execute 'grant execute on function ' || quote_ident(schema) || '.signup(text,text,text) to ' || quote_ident(anonymous);
   for r in
      select unnest(roles) as role
   loop

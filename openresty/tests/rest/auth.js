@@ -72,6 +72,23 @@ describe('auth', function() {
           r.body.me.role.should.equal('webuser');
         })
     });
+    it('signup with email as doctor', function(done) {
+      rest_service()
+        .post('/rpc/signup')
+        .set('Accept', 'application/vnd.pgrst.object+json')
+        .send({
+          email:"jacob@email.com",
+          password: "pass",
+          role: "doctor"
+        })
+        .expect('Content-Type', /json/)
+        .expect(200, done)
+        .expect( r => {
+          //console.log(r.body);
+          r.body.me.email.should.equal('jacob@email.com');
+          r.body.me.role.should.equal('doctor');
+        })
+    });
   });
 
   describe('without credentials', function () {
@@ -91,19 +108,52 @@ describe('auth', function() {
         })
     });
 
-    it('refuse signup with missing email and password', function(done) {
+    it('refuse signup with unknown role', function(done) {
       rest_service()
-      .post('/rpc/login?select=me,token')
+        .post('/rpc/signup')
+        .set('Accept', 'application/vnd.pgrst.object+json')
+        .send({
+          email: "janice@email.com",
+          password: "pass",
+          role: "dr"
+        })
+        .expect('Content-Type',/json/)
+        .expect(400, done)
+        .expect(r => {
+          //console.log(r.body);
+          r.body.message.should.equal('invalid input value for enum user_role: "dr"');
+        })
+    });
+
+    it('refuse signup with missing email', function(done) {
+      rest_service()
+      .post('/rpc/signup')
       .set('Accept', 'application/vnd.pgrst.object+json')
       .send({
-        email: "",
-        password: ""
+        email: " ",
+        password: "pass"
       })
       .expect('Content-Type',/json/)
       .expect(400, done)
       .expect(r => {
         //console.log(r.body);
-        r.body.message.should.equal('invalid email/password or phone number');
+        r.body.message.should.equal('new row for relation "user" violates check constraint "user_email_check"');
+      })
+    });
+
+    it('refuse signup with missing password', function(done) {
+      rest_service()
+      .post('/rpc/signup')
+      .set('Accept', 'application/vnd.pgrst.object+json')
+      .send({
+        email: "badri@email.com",
+        password: " "
+      })
+      .expect('Content-Type',/json/)
+      .expect(403, done)
+      .expect(r => {
+        //console.log(r.body);
+        r.body.message.should.equal('invalid password');
       })
     });
 
